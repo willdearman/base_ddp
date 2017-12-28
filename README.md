@@ -55,13 +55,12 @@ DATABASES = {
 }
 ```
 3) Launch project ``docker-compose up`` (Watch for any error messages)
-4) As necessary create apps within project (in a new terminal window not showing docker messages)
+4) As necessary, create apps within project (in a new terminal window not showing docker messages execute the code below). Dont forget to add the app name you created to ``INSTALLED_APPS`` in settings.py (dont forget the trailing comma).
 ```
 docker exec -it projectnamehere_web_1 /bin/bash
 ./manage.py startapp appnamehere
 ```
-Dont forget to add the app name you created to ``INSTALLED_APPS`` in settings.py. Don't forget the trailing comma!
-5) As necessary perform schema migrations
+5) As necessary, perform schema migrations
 ```
 ./manage.py makemigrations appnamehere
 ./manage.py migrate
