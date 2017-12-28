@@ -30,7 +30,7 @@ git add .
 git commit -m "Initial project commit"
 git push
 ````
-6) At this point you may also want to change LICENSE and readme.MD then
+6) At this point you may also want to change LICENSE and README.md then
 ````
 git add .
 git commit -m "Removed project base license and readme"
@@ -60,7 +60,7 @@ DATABASES = {
 docker exec -it projectnamehere_web_1 /bin/bash
 ./manage.py startapp appnamehere
 ```
-Dont forget to add the app name you created to ``INSTALLED_APPS`` in settings.py (don't forget the trailing comma)
+Dont forget to add the app name you created to ``INSTALLED_APPS`` in settings.py. Don't forget the trailing comma!
 5) As necessary perform schema migrations
 ```
 ./manage.py makemigrations appnamehere
