@@ -1,10 +1,18 @@
 # Will's Docker/Django/Postgres Project Base (base_ddp)
-This is the base I use for Django projects in Docker.
+This is the base I use for Django projects in Docker. These instructions are suitable for **beginner to intermediate** users who want to create a Python Django project in a reproducable Docker container.
 
 After completing these steps, you will have:
+- Docker services for web and database
+- The project folder mapped to /app in your web service docker container
 - Django running at http://127.0.0.1:8000/
-- Posgres running on port 5432
-- A github repository containing a working version of a basic Django application
+- Posgres running on port 5432 (127.0.0.1:5432)
+- A Github repository containing a working version of a basic Django application
+
+In the code blocks below, you will need to replace the following:
+- ``project_name_here`` should be the name of your project on Github
+- ``your_github_name`` should be your Github user name
+- ``projectnamehere`` should be the project name you want to use locally (e.g. subfolder names, Docker name, etc)
+- ``appnamehere`` name of an application within your Django project
 
 ## First Steps (git setup):
 1) Create local project directory and clone this repository into project directory
@@ -30,8 +38,8 @@ git push project_name_here master
 ````
 
 ## Next Steps (Docker and Django setup):
-1) Run ``sudo docker-compose run web django-admin.py startproject project_name_here . ``
-2) Update ``project_name_here/settings.py`` with the Postres configuration:
+1) Run ``sudo docker-compose run web django-admin.py startproject projectnamehere . ``
+2) Update ``projectnamehere/settings.py`` with the Postres configuration:
 ```
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -47,14 +55,13 @@ DATABASES = {
 }
 ```
 3) Launch project ``docker-compose up`` (Watch for any error messages)
-4) In a new terminal window
-5) As necessary create apps within project (in a new terminal window not showing docker messages)
+4) As necessary create apps within project (in a new terminal window not showing docker messages)
 ```
 docker exec -it projectnamehere_web_1 /bin/bash
 ./manage.py startapp appnamehere
 ```
 Dont forget to add the app name you created to ``INSTALLED_APPS`` in settings.py (don't forget the trailing comma)
-6) As necessary perform schema migrations
+5) As necessary perform schema migrations
 ```
 ./manage.py makemigrations appnamehere
 ./manage.py migrate
